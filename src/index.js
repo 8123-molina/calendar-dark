@@ -2,6 +2,7 @@
 import React from 'react';
 import {
   SafeAreaView,
+  Alert,
   ScrollView,
   StatusBar,
   StyleSheet,
@@ -43,36 +44,37 @@ LocaleConfig.locales['fr'] = {
   LocaleConfig.defaultLocale = 'fr';
 
 const App = () => {
- /*  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
- */
   const vacation = {key: 'vacation', color: 'red', selectedDotColor: 'blue'};
   const massage = {key: 'massage', color: 'blue', selectedDotColor: 'blue'};
   const workout = {key: 'workout', color: 'green'};
 
+  function clickDay () {
+    Alert.alert('Insert respective function');
+  }
   return (
     
     <ScrollView
-    contentInsetAdjustmentBehavior="automatic"
     style={{backgroundColor: '#000000'}}>
-    <Text style={{backgroundColor: 'grey',}}>foi</Text>
+    
+
+    
       <Calendar
           style={{
             borderColor: 'black',
             backgroundColor: 'black',
             flex: 1,
-          }}
+          }} 
           horizntal={true}
-          onDayPress={day => {
-            console.log('selected day', day);
-          }}
+          paginaçãoEnabled = { true }
+          onVisibleMonthsChange = { ( month )  =>  { console . log ( 'agora esses meses estão visíveis' ,  month ) ; } }
+          pastScrollRange = { 50 } 
+          futureScrollRange = { 50 }
+          scrollEnabled = { true } 
+          showScrollIndicator = { true } 
+          onDayPress={day => { clickDay(day)}}
           onDayLongPress={day => {
             console.log('selected day', day);
           }}
-          monthFormat={'yyyy'}
           onMonthChange={month => {
             console.log('month changed', month);
           }}
@@ -85,6 +87,7 @@ const App = () => {
           disableArrowLeft={true}
           disableArrowRight={true}
           disableAllTouchEventsForDisabledDays={false}
+          disableTouchEvent={true}
           enableSwipeMonths={false}
           markingType={'multi-dot'}
           markedDates={{
@@ -96,8 +99,6 @@ const App = () => {
           theme={{
             backgroundColor: '#000000',
             calendarBackground: '#000000',
-            textSectionTitleColor: '#b6c1cd',
-            textSectionTitleDisabledColor: '#d9e1e8',
             selectedDayBackgroundColor: '#00adf5',
             selectedDayTextColor: '#ffffff',
             todayTextColor: '#00adf5',
@@ -107,7 +108,7 @@ const App = () => {
             selectedDotColor: '#ffffff',
             arrowColor: 'orange',
             disabledArrowColor: '#d9e1e8',
-            monthTextColor: 'grey',
+            monthTextColor: 'white',
             indicatorColor: 'blue',
             textDisabledColor: 'grey',
             textDayFontFamily: 'monospace',
@@ -119,6 +120,7 @@ const App = () => {
             textDayFontSize: 16,
             textMonthFontSize: 20,
             textDayHeaderFontSize: 16,
+            textSectionTitleColor: '#b6c1cd',
             textSectionTitleDisabledColor: '#d9e1e8',
             'stylesheet.calendar.main': {
               dayContainer: {
@@ -136,6 +138,7 @@ const App = () => {
                 marginTop : 10 , 
                 flexDirection : 'row' , 
                 justifyContent : 'space-between' 
+
               } 
             }
           }}
